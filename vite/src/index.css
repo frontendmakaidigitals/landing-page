@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+/* If you want to style a container element, use a selector like .container */
+@utility container {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body {
+  background-color: black;
+}
+/* Keyframes */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap, 1rem)));
+  }
+}
+
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-100% - var(--gap, 1rem)));
+  }
+}
+
+/* Utilities */
+.marquee {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee var(--duration, 8s) linear infinite;
+}
+
+.marquee-vertical {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee-vertical var(--duration, 8s) linear infinite;
+}
+
+/* Optional: pause on hover */
+.group-hover\:pause-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Optional: reverse direction */
+.reverse-marquee {
+  animation-direction: reverse;
+}
