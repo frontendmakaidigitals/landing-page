@@ -5,14 +5,14 @@ import { ChevronDown } from "lucide-react";
 import { cn } from "../lib/utils";
 
 type AccordionContextType = {
-  isActive: boolean;
-  value: string;
+  activeItems: string[];
+  multiple?: boolean;
   onChangeIndex: (value: string) => void;
 };
 
 const AccordionContext = React.createContext<AccordionContextType>({
-  isActive: false,
-  value: "",
+  activeItems: [],
+  multiple: false,
   onChangeIndex: () => {},
 });
 
@@ -43,12 +43,12 @@ export function Accordion({
   multiple?: boolean;
   defaultValue?: string | string[];
 }) {
-  const [activeIndex, setActiveIndex] = React.useState<string[]>(
+  const [activeItems, setActiveItems] = React.useState<string[]>(
     multiple
-      ? defaultValue
-        ? Array.isArray(defaultValue)
-          ? defaultValue
-          : [defaultValue]
+      ? Array.isArray(defaultValue)
+        ? defaultValue
+        : defaultValue
+        ? [defaultValue]
         : []
       : defaultValue
       ? Array.isArray(defaultValue)
@@ -58,33 +58,21 @@ export function Accordion({
   );
 
   function onChangeIndex(value: string) {
-    setActiveIndex((currentActiveIndex) => {
+    setActiveItems((prev) => {
       if (!multiple) {
-        return value === currentActiveIndex[0] ? [] : [value];
+        return prev[0] === value ? [] : [value];
       }
-
-      if (currentActiveIndex.includes(value)) {
-        return currentActiveIndex.filter((i) => i !== value);
-      }
-
-      return [...currentActiveIndex, value];
+      return prev.includes(value)
+        ? prev.filter((v) => v !== value)
+        : [...prev, value];
     });
   }
 
-  return React.Children.map(children, (child) => {
-    if (!isValidElement<{ value?: string }>(child)) return null;
-
-    const value = child.props.value ?? "";
-    const isActive = multiple
-      ? activeIndex.includes(value)
-      : activeIndex[0] === value;
-
-    return (
-      <AccordionContext.Provider value={{ isActive, value, onChangeIndex }}>
-        {React.cloneElement(child)}
-      </AccordionContext.Provider>
-    );
-  });
+  return (
+    <AccordionContext.Provider value={{ activeItems, multiple, onChangeIndex }}>
+      {children}
+    </AccordionContext.Provider>
+  );
 }
 
 export function AccordionItem({
@@ -94,20 +82,27 @@ export function AccordionItem({
   children: ReactNode;
   value: string;
 }) {
-  const { isActive } = useAccordion();
+  const { activeItems } = useAccordion();
+  const isActive = activeItems.includes(value);
 
   return (
     <div
       data-active={isActive || undefined}
-      className={`rounded-lg overflow-hidden mb-2  ${
+      className={`rounded-lg overflow-hidden mb-2 ${
         isActive
-          ? "active border-2 dark:border-[#656fe2]  border-[#F2F2F2] dark:bg-[#E0ECFB] bg-[#F2F2F2]"
+          ? "active border-2 dark:border-[#656fe2] border-[#F2F2F2] dark:bg-[#E0ECFB] bg-[#F2F2F2]"
           : "bg-transparent border-2 dark:hover:border-[#656fe2]"
-      }
-    `}
+      }`}
       data-value={value}
     >
-      {children}
+      {React.Children.map(children, (child) =>
+        isValidElement(child)
+          ? React.cloneElement(child as React.ReactElement<any>, {
+              value,
+              isActive,
+            })
+          : child
+      )}
     </div>
   );
 }
@@ -116,29 +111,34 @@ export function AccordionHeader({
   children,
   customIcon,
   className,
+  value,
+  isActive,
 }: {
   children: ReactNode;
   customIcon?: boolean;
   className?: string;
+  value?: string;
+  isActive?: boolean;
 }) {
-  const { isActive, value, onChangeIndex } = useAccordion();
+  const { onChangeIndex } = useAccordion();
 
   return (
     <motion.div
       data-active={isActive || undefined}
-      className={`group p-4 cursor-pointer transition-all font-semibold    dark:text-white text-black dark:hover:bg-[#1e2a78] hover:bg-[#F2F2F2] dark:hover:text-white hover:text-black flex justify-between items-center ${
+      className={cn(
+        `group p-4 cursor-pointer transition-all font-semibold dark:text-white text-black dark:hover:bg-[#1e2a78] hover:bg-[#F2F2F2] dark:hover:text-white hover:text-black flex justify-between items-center`,
         isActive
-          ? "active  dark:bg-[#1e2a78] bg-[#F2F2F2] "
-          : "dark:bg-[#11112b] bg-white"
-      }
-      `}
-      onClick={() => onChangeIndex(value)}
+          ? "dark:bg-[#1e2a78] bg-[#F2F2F2]"
+          : "dark:bg-[#11112b] bg-white",
+        className
+      )}
+      onClick={() => value && onChangeIndex(value)}
     >
       {children}
       {!customIcon && (
         <ChevronDown
           className={cn(
-            "transition-transform ",
+            "transition-transform",
             isActive ? "rotate-180" : "rotate-0"
           )}
         />
@@ -150,17 +150,16 @@ export function AccordionHeader({
 export function AccordionPanel({
   children,
   className,
+  isActive,
 }: {
   children: ReactNode;
   className?: string;
+  isActive?: boolean;
 }) {
-  const { isActive } = useAccordion();
-
   return (
-    <AnimatePresence initial={true}>
+    <AnimatePresence initial={false}>
       {isActive && (
         <motion.div
-          data-active={isActive || undefined}
           initial={{ height: 0, overflow: "hidden" }}
           animate={{ height: "auto", overflow: "hidden" }}
           exit={{ height: 0 }}
@@ -173,12 +172,8 @@ export function AccordionPanel({
             exit={{
               clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
             }}
-            transition={{
-              type: "spring",
-              duration: 0.4,
-              bounce: 0,
-            }}
-            className={`p-3 bg-transparent text-black `}
+            transition={{ type: "spring", duration: 0.4, bounce: 0 }}
+            className={`p-3 bg-transparent text-black`}
           >
             {children}
           </motion.article>

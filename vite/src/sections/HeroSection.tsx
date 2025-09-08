@@ -2,6 +2,7 @@ import { Zap } from "lucide-react";
 import { useAnimateText } from "../hooks/useAnimateText";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import MeshGradient from "../components/MeshGradient";
 const HeroSection = () => {
   useAnimateText({
     trigger: ".heroContainer",
@@ -42,7 +43,10 @@ const HeroSection = () => {
     });
   }, []);
   return (
-    <section className="heroContainer bg-gradient-to-t from-[#797a7a] to-[#171717]">
+    <section className="heroContainer relative">
+      <div className="absolute inset-0 w-full h-full">
+        <MeshGradient />
+      </div>
       <div className="max-w-3xl h-[100vh] text-center container flex flex-col items-center justify-center">
         <h1 className="relative overflow-hidden w-48 h-10 px-5 text-sm bg-[#ADB2D4] rounded-full">
           <span
