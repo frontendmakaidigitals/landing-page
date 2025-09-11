@@ -36,8 +36,8 @@ const FAQ = () => {
         <h1 className="text-5xl text-center font-[500] text-slate-50">
           Frequently Asked Questions
         </h1>
-        <div className="mt-8">
-          <AccordionContainer className="gap-4 ">
+        <div className="mt-8 w-full">
+          <AccordionContainer className="max-w-3xl mx-auto">
             <Accordion>
               <AccordionWrapper>
                 {faqs.map((faq, idx) => (

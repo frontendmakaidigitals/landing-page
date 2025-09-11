@@ -25,9 +25,7 @@ export function AccordionContainer({
   children: ReactNode;
   className?: string;
 }) {
-  return (
-    <div className={cn("grid grid-cols-2 gap-1", className)}>{children}</div>
-  );
+  return <div className={cn("", className)}>{children}</div>;
 }
 
 export function AccordionWrapper({ children }: { children: ReactNode }) {

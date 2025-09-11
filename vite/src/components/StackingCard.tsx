@@ -6,21 +6,21 @@ const projects = [
     description:
       "We started working together in November 2022 focusing on direct response offers. Initially, the offers were lame and not so salesy. So we focused on generating powerful offers that would alter the whole industry leaders & that’s how we scaled them to ₹8 Crore in just 12 months with an insane ads strategy.",
     src: "rock.jpg",
-    link: "https://images.unsplash.com/photo-1605106702842-01a887a31122?q=80&w=500&auto=format&fit=crop",
+    link: "https://media.istockphoto.com/id/1402430797/photo/business-3d-tablet-virtual-growth-arrow-financial-graph-on-digital-technology-strategy.jpg?s=612x612&w=0&k=20&c=OKYWpTE-G2OYQu7wKjfEiUZQWVnf7XVPuJNlj7X7tAI=",
   },
   {
     title: "Scaled From Scratch To ₹8 Crore ARR In Just 1 Year",
     description:
       "We started working together in November 2022 focusing on direct response offers. Initially, the offers were lame and not so salesy. So we focused on generating powerful offers that would alter the whole industry leaders & that’s how we scaled them to ₹8 Crore in just 12 months with an insane ads strategy.",
     src: "rock.jpg",
-    link: "https://images.unsplash.com/photo-1605106702842-01a887a31122?q=80&w=500&auto=format&fit=crop",
+    link: "https://media.istockphoto.com/id/1402430797/photo/business-3d-tablet-virtual-growth-arrow-financial-graph-on-digital-technology-strategy.jpg?s=612x612&w=0&k=20&c=OKYWpTE-G2OYQu7wKjfEiUZQWVnf7XVPuJNlj7X7tAI=",
   },
   {
     title: "Scaled From Scratch To ₹8 Crore ARR In Just 1 Year",
     description:
       "We started working together in November 2022 focusing on direct response offers. Initially, the offers were lame and not so salesy. So we focused on generating powerful offers that would alter the whole industry leaders & that’s how we scaled them to ₹8 Crore in just 12 months with an insane ads strategy.",
     src: "rock.jpg",
-    link: "https://images.unsplash.com/photo-1605106702842-01a887a31122?q=80&w=500&auto=format&fit=crop",
+    link: "https://media.istockphoto.com/id/1402430797/photo/business-3d-tablet-virtual-growth-arrow-financial-graph-on-digital-technology-strategy.jpg?s=612x612&w=0&k=20&c=OKYWpTE-G2OYQu7wKjfEiUZQWVnf7XVPuJNlj7X7tAI=",
   },
 ];
 export default function StackkingCard() {
@@ -103,7 +103,7 @@ export const Card: React.FC<CardProps> = ({
               className={`w-full h-full`}
               style={{ scale: imageScale }}
             >
-              <img src={url} alt="image" className="object-cover" />
+              <img src={url} alt="image" className="object-cover w-full h-full" />
             </motion.div>
           </div>
         </div>
