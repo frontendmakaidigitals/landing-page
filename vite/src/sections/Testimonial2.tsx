@@ -5,10 +5,11 @@ import Carousel, {
   SliderProgress,
 } from "../components/Carousel";
 
-import { ArrowLeft, ArrowRight, Star } from "lucide-react";
+import { Star } from "lucide-react";
 
 const Testimonial2 = () => {
   const OPTIONS: EmblaOptionsType = { loop: false };
+
   const imgPreview = [
     {
       name: "Alice Johnson",
