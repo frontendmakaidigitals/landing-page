@@ -31,7 +31,7 @@ const FAQ = () => {
   ];
 
   return (
-    <section>
+    <section className="my-16">
       <div className="container">
         <h1 className="text-5xl text-center font-[500] text-slate-50">
           Frequently Asked Questions

@@ -15,16 +15,7 @@ body {
     transform: translateX(0);
   }
   to {
-    transform: translateX(calc(-100% - var(--gap, 1rem)));
-  }
-}
-
-@keyframes marquee-vertical {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(calc(-100% - var(--gap, 1rem)));
+    transform: translateX(-100%);
   }
 }
 

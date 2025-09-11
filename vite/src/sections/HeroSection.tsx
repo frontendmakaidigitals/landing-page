@@ -48,12 +48,12 @@ const HeroSection = () => {
         <MeshGradient />
       </div>
       <div className="max-w-3xl h-[100vh] text-center container flex flex-col items-center justify-center">
-        <h1 className="relative overflow-hidden w-48 h-10 px-5 text-sm bg-[#ADB2D4] rounded-full">
+        <h1 className="relative overflow-hidden w-48 h-10 px-5 text-sm bg-white/40 backdrop-blur-lg backdrop-filter rounded-full">
           <span
             ref={marqueeRef}
-            className="inline-flex items-center gap-2 -translate-y-1/2 top-1/2 absolute whitespace-nowrap"
+            className="inline-flex text-white items-center gap-2 -translate-y-1/2 top-1/2 absolute whitespace-nowrap"
           >
-            <Zap className="fill-black size-4 flex-shrink-0" />
+            <Zap className="fill-white text-white size-4 flex-shrink-0" />
             7-Day FREE TRIAL
           </span>
         </h1>
@@ -70,28 +70,28 @@ const HeroSection = () => {
 
         <button className="relative mt-10 h-12 px-8 rounded-lg overflow-hidden transition-all duration-500 group">
           {/* Outer gradient border */}
-          <div className="absolute inset-0 rounded-lg p-[2px] bg-gradient-to-b from-[#3A6FF8] via-[#0B1D48] to-[#0A3E7D]">
-            <div className="absolute inset-0 bg-[#0A1A2F] rounded-lg opacity-90"></div>
+          <div className="absolute inset-0 rounded-lg p-[2px] bg-gradient-to-b from-[#4A8CFF] via-[#1A3D8C] to-[#1453B8]">
+            <div className="absolute inset-0 bg-[#0B223F] rounded-lg opacity-80"></div>
           </div>
 
-          {/* Inner dark layers */}
-          <div className="absolute inset-[2px] bg-[#0A1A2F] rounded-lg opacity-95"></div>
-          <div className="absolute inset-[2px] bg-gradient-to-r from-[#0A1A2F] via-[#10294A] to-[#0A1A2F] rounded-lg opacity-90"></div>
-          <div className="absolute inset-[2px] bg-gradient-to-b from-[#3A6FF8]/40 via-[#10294A] to-[#0A3E7D]/30 rounded-lg opacity-80"></div>
+          {/* Inner bright layers */}
+          <div className="absolute inset-[2px] bg-[#0F2B52] rounded-lg opacity-90"></div>
+          <div className="absolute inset-[2px] bg-gradient-to-r from-[#123D6F] via-[#1C4E8A] to-[#123D6F] rounded-lg opacity-85"></div>
+          <div className="absolute inset-[2px] bg-gradient-to-b from-[#4A8CFF]/50 via-[#1C4E8A]/80 to-[#1453B8]/50 rounded-lg opacity-90"></div>
 
           {/* Highlight glow */}
-          <div className="absolute inset-[2px] bg-gradient-to-br from-[#6AB7FF]/10 via-[#10294A] to-[#123456]/50 rounded-lg"></div>
-          <div className="absolute inset-[2px] shadow-[inset_0_0_15px_rgba(106,183,255,0.15)] rounded-lg"></div>
+          <div className="absolute inset-[2px] bg-gradient-to-br from-[#80C3FF]/20 via-[#1A3D6F] to-[#1E5CB8]/60 rounded-lg"></div>
+          <div className="absolute inset-[2px] shadow-[inset_0_0_20px_rgba(128,195,255,0.25),0_0_15px_rgba(74,140,255,0.4)] rounded-lg"></div>
 
           {/* Button text */}
           <div className="relative flex items-center justify-center gap-2">
-            <span className="text-lg font-normal bg-gradient-to-b from-[#A8D8FF] to-[#6AB7FF] bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(106,183,255,0.4)] tracking-tighter">
+            <span className="text-md font-semibold bg-gradient-to-b from-[#D0E9FF] to-[#80C3FF] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(128,195,255,0.6)] tracking-tight">
               Submit request
             </span>
           </div>
 
           {/* Hover overlay */}
-          <div className="absolute inset-[2px] opacity-0 transition-opacity duration-300 bg-gradient-to-r from-[#123456]/20 via-[#6AB7FF]/10 to-[#123456]/20 group-hover:opacity-100 rounded-lg"></div>
+          <div className="absolute inset-[2px] opacity-0 transition-opacity duration-300 bg-gradient-to-r from-[#1E5CB8]/30 via-[#80C3FF]/20 to-[#1E5CB8]/30 group-hover:opacity-100 rounded-lg"></div>
         </button>
       </div>
     </section>

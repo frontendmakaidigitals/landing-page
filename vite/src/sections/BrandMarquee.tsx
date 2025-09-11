@@ -3,7 +3,7 @@ import Marquee from "../components/Marquee";
 import "../index.css";
 const reviews = [
   {
-    name: "facebool",
+    name: "facebook",
     img: "facebook.webp",
   },
   {
@@ -52,7 +52,8 @@ const reviews = [
   },
 ];
 
-const firstRow = reviews.slice(0, reviews.length);
+const firstRow = reviews.slice(0, reviews.length / 2);
+const secondRow = reviews.slice(reviews.length / 2, reviews.length);
 
 const ReviewCard = ({ img }: { img: string }) => {
   return (
@@ -73,8 +74,11 @@ const ReviewCard = ({ img }: { img: string }) => {
 const BrandMarquee = () => {
   return (
     <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background py-20 md:shadow-xl">
-      <Marquee pauseOnHover className="[--duration:20s]">
+      <Marquee pauseOnHover className="[--duration:50s]">
         {firstRow.map((review) => (
+          <ReviewCard key={review.name} {...review} />
+        ))}
+        {secondRow.map((review) => (
           <ReviewCard key={review.name} {...review} />
         ))}
       </Marquee>

@@ -8,7 +8,7 @@ export default function StickyScroll() {
             Our Process
           </p>
           <h1 className="2xl:text-7xl text-5xl px-8 font-semibold text-center tracking-tight leading-[120%]">
-            This is what you get when working with ClickWise
+            This is what you get when working with Spok Digital
           </h1>
           <button className="bg-blue-500 px-3 py-[.6rem] rounded-md">
             Apply To work with Us
