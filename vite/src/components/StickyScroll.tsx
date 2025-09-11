@@ -14,7 +14,7 @@ export default function StickyScroll() {
             Apply To work with Us
           </button>
         </div>
-        <div className="grid gap-2">
+        <div className="grid gap-2 overflow-hidden">
           <figure className="grid place-content-center -skew-x-12">
             <img
               src="https://images.unsplash.com/photo-1718838541476-d04e71caa347?w=500&auto=format&fit=crop"
