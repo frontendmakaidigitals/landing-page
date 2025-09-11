@@ -1,4 +1,4 @@
-import React from "react";
+
 import { AnimatedTestimonial } from "../components/AnimatedTestimonial";
 const Testimonial = () => {
   const testimonials = [
