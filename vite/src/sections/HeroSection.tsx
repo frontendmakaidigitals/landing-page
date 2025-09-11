@@ -2,8 +2,11 @@ import { Zap } from "lucide-react";
 import { useAnimateText } from "../hooks/useAnimateText";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import MeshGradient from "../components/MeshGradient";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 const HeroSection = () => {
+  const marqueeRef = useRef<HTMLDivElement | null>(null);
+  const heroImgRef = useRef<HTMLImageElement | null>(null);
   useAnimateText({
     trigger: ".heroContainer",
     selector: ".heroText1",
@@ -21,8 +24,6 @@ const HeroSection = () => {
     y: 150,
     delay: 0.9,
   });
-
-  const marqueeRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!marqueeRef.current) return;
@@ -42,10 +43,31 @@ const HeroSection = () => {
       repeat: -1,
     });
   }, []);
+
+  useEffect(() => {
+    if (!heroImgRef.current) return;
+
+    gsap.to(heroImgRef.current, {
+      scale: 1.2, // maximum zoom when scrolling
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".heroContainer",
+        start: "top top",
+        end: "bottom top",
+        scrub: true, // smooth animation linked to scroll
+      },
+    });
+  }, []);
+
   return (
     <section className="heroContainer relative">
-      <div className="absolute inset-0 w-full h-full">
-        <MeshGradient />
+      <div className="absolute overflow-hidden inset-0 w-full h-full">
+        <img
+          ref={heroImgRef}
+          src={"/heroImg.png"}
+          alt={"hero-bg"}
+          className={"w-full h-full object-cover"}
+        />
       </div>
       <div className="max-w-3xl h-[100vh] text-center container flex flex-col items-center justify-center">
         <h1 className="relative overflow-hidden w-48 h-10 px-5 text-sm bg-white/40 backdrop-blur-lg backdrop-filter rounded-full">
@@ -57,11 +79,28 @@ const HeroSection = () => {
             7-Day FREE TRIAL
           </span>
         </h1>
-        <h2 className="text-5xl !overflow-hidden heroText1 text-[#FFE8DB] mt-5 font-[600]">
-          We Make Your Business An Extra{" "}
-          <span className="text-[#5682B1]">$30,000</span> to{" "}
-          <span className="text-[#5682B1]">$300,000+</span> MRR in 90 Days, Or
-          You Don&apos;t Pay!
+        <h2 className="relative z-10 text-5xl mt-5 font-[700] leading-[1.1]">
+          <span className="bg-gradient-to-r from-gray-300 via-white to-gray-300 text-transparent bg-clip-text">
+            We Make Your Business An Extra{" "}
+          </span>
+
+          <span className="bg-gradient-to-r from-red-400 via-red-50 to-red-400 text-transparent bg-clip-text">
+            $30,000
+          </span>
+
+          <span className="bg-gradient-to-r from-gray-300 via-white to-gray-300 text-transparent bg-clip-text">
+            {" "}
+            to{" "}
+          </span>
+
+          <span className="bg-gradient-to-r from-red-400 via-red-50 to-red-400 text-transparent bg-clip-text">
+            $300,000+
+          </span>
+
+          <span className="bg-gradient-to-r from-gray-300 via-white to-gray-300 text-transparent bg-clip-text">
+            {" "}
+            MRR in 90 Days
+          </span>
         </h2>
         <h3 className="mt-5 overflow-hidden heroPara text-[#FFE8DB]">
           Generate a predictable & sustainable revenue stream for your business
@@ -70,28 +109,28 @@ const HeroSection = () => {
 
         <button className="relative mt-10 h-12 px-8 rounded-lg overflow-hidden transition-all duration-500 group">
           {/* Outer gradient border */}
-          <div className="absolute inset-0 rounded-lg p-[2px] bg-gradient-to-b from-[#4A8CFF] via-[#1A3D8C] to-[#1453B8]">
-            <div className="absolute inset-0 bg-[#0B223F] rounded-lg opacity-80"></div>
+          <div className="absolute inset-0 rounded-lg p-[2px] bg-gradient-to-b from-red-600 via-red-700 to-red-800">
+            <div className="absolute inset-0 bg-red-900 rounded-lg opacity-80"></div>
           </div>
 
           {/* Inner bright layers */}
-          <div className="absolute inset-[2px] bg-[#0F2B52] rounded-lg opacity-90"></div>
-          <div className="absolute inset-[2px] bg-gradient-to-r from-[#123D6F] via-[#1C4E8A] to-[#123D6F] rounded-lg opacity-85"></div>
-          <div className="absolute inset-[2px] bg-gradient-to-b from-[#4A8CFF]/50 via-[#1C4E8A]/80 to-[#1453B8]/50 rounded-lg opacity-90"></div>
+          <div className="absolute inset-[2px] bg-red-800 rounded-lg opacity-90"></div>
+          <div className="absolute inset-[2px] bg-gradient-to-r from-red-700 via-red-600 to-red-700 rounded-lg opacity-85"></div>
+          <div className="absolute inset-[2px] bg-gradient-to-b from-red-600/50 via-red-700/80 to-red-800/50 rounded-lg opacity-90"></div>
 
           {/* Highlight glow */}
-          <div className="absolute inset-[2px] bg-gradient-to-br from-[#80C3FF]/20 via-[#1A3D6F] to-[#1E5CB8]/60 rounded-lg"></div>
-          <div className="absolute inset-[2px] shadow-[inset_0_0_20px_rgba(128,195,255,0.25),0_0_15px_rgba(74,140,255,0.4)] rounded-lg"></div>
+          <div className="absolute inset-[2px] bg-gradient-to-br from-red-400/20 via-red-700 to-red-900/60 rounded-lg"></div>
+          <div className="absolute inset-[2px] shadow-[inset_0_0_20px_rgba(255,100,100,0.25),0_0_15px_rgba(255,50,50,0.4)] rounded-lg"></div>
 
           {/* Button text */}
           <div className="relative flex items-center justify-center gap-2">
-            <span className="text-md font-semibold bg-gradient-to-b from-[#D0E9FF] to-[#80C3FF] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(128,195,255,0.6)] tracking-tight">
+            <span className="text-md font-semibold bg-gradient-to-b from-red-200 to-red-400 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(255,100,100,0.6)] tracking-tight">
               Submit request
             </span>
           </div>
 
           {/* Hover overlay */}
-          <div className="absolute inset-[2px] opacity-0 transition-opacity duration-300 bg-gradient-to-r from-[#1E5CB8]/30 via-[#80C3FF]/20 to-[#1E5CB8]/30 group-hover:opacity-100 rounded-lg"></div>
+          <div className="absolute inset-[2px] opacity-0 transition-opacity duration-300 bg-gradient-to-r from-red-900/30 via-red-400/20 to-red-900/30 group-hover:opacity-100 rounded-lg"></div>
         </button>
       </div>
     </section>

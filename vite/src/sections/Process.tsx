@@ -1,36 +1,42 @@
+import { motion } from "motion/react";
+import { ArrowRight } from "lucide-react";
 const Process = () => {
   return (
     <section className="my-20">
-      <div className="container ">
+      <div className="container">
         <h1 className="text-5xl font-[600] text-slate-50 text-center">
           After you Book a call...
         </h1>
-        <ul className="grid mt-8 text-slate-50 mx-auto grid-cols-1 lg:grid-cols-2 gap-10 max-w-2xl">
-          <li className="w-full rounded-lg p-4 border border-slate-50/20">
-            <div className="h-[230px] rounded-lg overflow-hidden w-full bg-red-500">
-              <img
-                src={
-                  "https://images.pexels.com/photos/186461/pexels-photo-186461.jpeg"
-                }
-                className="w-full h-full object-cover"
-                alt={""}
-              />
+
+        <ul className="grid mt-14 text-slate-50 mx-auto grid-cols-1 lg:grid-cols-3 gap-10 max-w-4xl">
+          <li className="gradient-shadow">
+            <div className=" w-full rounded-lg bg-black p-4 border border-slate-50/20">
+              <div className="h-[230px] rounded-lg overflow-hidden w-full">
+                <img
+                  src="https://images.pexels.com/photos/186461/pexels-photo-186461.jpeg"
+                  className="w-full h-full object-cover"
+                  alt=""
+                />
+              </div>
+              <p className="text-xl mt-4">
+                We will audit your current strategy & ad accounts for free
+              </p>
             </div>
-            <p className="text-2xl mt-4">
-              We will audit your current strategy & ad accounts for free
-            </p>
           </li>
-          <li className="w-full rounded-lg p-4 border border-slate-50/20">
-            <div className="h-[230px] rounded-lg overflow-hidden w-full bg-red-500">
-              <img
-                src={
-                  "https://images.pexels.com/photos/210600/pexels-photo-210600.jpeg"
-                }
-                className="w-full h-full object-cover"
-                alt={""}
-              />
+          <div className="w-full h-full flex justify-center items-center">
+            <ArrowRight className="size-32 text-slate-200" />
+          </div>
+          <li className="gradient-shadow">
+            <div className="bg-black w-full h-full rounded-lg p-4 border border-slate-50/20">
+              <div className="h-[230px] rounded-lg overflow-hidden w-full">
+                <img
+                  src="https://images.pexels.com/photos/210600/pexels-photo-210600.jpeg"
+                  className="w-full h-full object-cover"
+                  alt=""
+                />
+              </div>
+              <p className="text-xl mt-4">We offer a risk free investment.</p>
             </div>
-            <p className="text-2xl mt-4">We offer a risk free investment. </p>
           </li>
         </ul>
       </div>

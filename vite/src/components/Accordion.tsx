@@ -88,8 +88,8 @@ export function AccordionItem({
       data-active={isActive || undefined}
       className={`rounded-lg overflow-hidden mb-2 ${
         isActive
-          ? "active border-2 dark:border-[#656fe2] border-[#F2F2F2] dark:bg-[#E0ECFB] bg-[#F2F2F2]"
-          : "bg-transparent border-2 dark:hover:border-[#656fe2]"
+          ? "active border-2  border-[#F2F2F2]  bg-[#F2F2F2]"
+          : "bg-transparent border-2 "
       }`}
       data-value={value}
     >
@@ -124,10 +124,8 @@ export function AccordionHeader({
     <motion.div
       data-active={isActive || undefined}
       className={cn(
-        `group p-4 cursor-pointer transition-all font-semibold dark:text-white text-black dark:hover:bg-[#1e2a78] hover:bg-[#F2F2F2] dark:hover:text-white hover:text-black flex justify-between items-center`,
-        isActive
-          ? "dark:bg-[#1e2a78] bg-[#F2F2F2]"
-          : "dark:bg-[#11112b] bg-white",
+        `group p-4 cursor-pointer transition-all font-semibold  text-slate-50 1e2a78] hover:bg-slate-600  hover:text-white flex justify-between items-center`,
+        isActive ? " bg-gray-800 text-slate-50" : " bg-gray-600",
         className
       )}
       onClick={() => value && onChangeIndex(value)}

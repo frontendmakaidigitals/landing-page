@@ -9,35 +9,73 @@
 body {
   background-color: black;
 }
-/* Keyframes */
-@keyframes marquee {
-  from {
+
+@keyframes marquee-scroll {
+  0% {
     transform: translateX(0);
   }
-  to {
-    transform: translateX(-100%);
+  100% {
+    transform: translateX(calc(-50% - var(--gap)));
   }
 }
 
-/* Utilities */
 .marquee {
-  display: inline-block;
-  white-space: nowrap;
-  animation: marquee var(--duration, 8s) linear infinite;
+  animation: marquee-scroll var(--duration) linear infinite;
 }
 
-.marquee-vertical {
-  display: inline-block;
-  white-space: nowrap;
-  animation: marquee-vertical var(--duration, 8s) linear infinite;
-}
-
-/* Optional: pause on hover */
-.group-hover\:pause-marquee:hover {
+.pause-marquee:hover .marquee {
   animation-play-state: paused;
 }
 
-/* Optional: reverse direction */
 .reverse-marquee {
   animation-direction: reverse;
+}
+
+.marquee > div > * {
+  transform: perspective(1000px) rotateX(15deg) scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.marquee > div > *:hover {
+  transform: perspective(1000px) rotateX(0deg) scale(1.05);
+}
+
+:root {
+  --gradient-shadow: linear-gradient(45deg, #2d0000, #450000, #580202);
+}
+
+@keyframes gradient-animate {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 300% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.gradient-shadow {
+  position: relative;
+  z-index: 0;
+}
+
+.gradient-shadow::before,
+.gradient-shadow::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  background: var(--gradient-shadow);
+  background-size: 400%;
+  z-index: -1;
+  border-radius: 0.5rem; /* match Tailwind rounded-lg */
+  animation: gradient-animate 30s linear infinite;
+}
+
+.gradient-shadow::after {
+  filter: blur(50px); /* 🔹 glowing shadow effect */
 }

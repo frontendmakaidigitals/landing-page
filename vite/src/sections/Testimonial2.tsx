@@ -9,7 +9,6 @@ import { Star } from "lucide-react";
 
 const Testimonial2 = () => {
   const OPTIONS: EmblaOptionsType = { loop: false };
-
   const imgPreview = [
     {
       name: "Alice Johnson",
@@ -83,13 +82,13 @@ const Testimonial2 = () => {
       rating: 5,
     },
   ];
-
   return (
     <section className="">
       <div className=" py-12 max-w-7xl ml-auto">
         <div className="flex justify-between items-center pr-14">
-          <h1 className=" text-5xl  mx-right max-w-xl font-[500] text-slate-50">
-            What clients think about our services
+          <h1 className=" text-5xl  mx-right max-w-xl font-[600] text-slate-50">
+            What <span className="text-red-500">Clients</span> think about our
+            services
           </h1>
           <div className="flex gap-3"></div>
         </div>

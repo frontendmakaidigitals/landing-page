@@ -31,7 +31,7 @@ export default function StackkingCard() {
   });
   return (
     <section className="bg-black" ref={container}>
-      <section className="text-white   w-full bg-slate-950  ">
+      <section className="text-white   w-full bg-red-950/30  ">
         {projects.map((project, i) => {
           const targetScale = 1 - (projects.length - i) * 0.05;
           return (
@@ -70,12 +70,7 @@ export const Card: React.FC<CardProps> = ({
   targetScale,
 }) => {
   const container = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ["start end", "start start"],
-  });
 
-  const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1]);
   const scale = useTransform(progress, range, [1, targetScale]);
 
   return (
@@ -88,7 +83,7 @@ export const Card: React.FC<CardProps> = ({
           scale,
           top: `calc(-5vh + ${i * 25}px)`,
         }}
-        className={`flex bg-white/20 backdrop-filter backdrop-blur-lg  flex-col relative -top-[25%] h-[450px] w-[70%] rounded-md p-10 origin-top`}
+        className={`flex bg-white/20 backdrop-filter backdrop-blur-2xl  flex-col relative -top-[25%] h-[450px] w-[60%] rounded-md px-10 py-6 origin-top`}
       >
         <div className={`flex h-full mt-5 gap-10`}>
           <div className={`w-[40%] relative top-[10%]`}>
@@ -99,11 +94,12 @@ export const Card: React.FC<CardProps> = ({
           <div
             className={`relative w-[60%] h-full rounded-lg overflow-hidden `}
           >
-            <motion.div
-              className={`w-full h-full`}
-              style={{ scale: imageScale }}
-            >
-              <img src={url} alt="image" className="object-cover w-full h-full" />
+            <motion.div className={`w-full h-full `}>
+              <img
+                src={url}
+                alt="image"
+                className="object-cover w-full h-full"
+              />
             </motion.div>
           </div>
         </div>

@@ -33,11 +33,11 @@ const FAQ = () => {
   return (
     <section className="my-16">
       <div className="container">
-        <h1 className="text-5xl text-center font-[500] text-slate-50">
+        <h1 className="text-5xl text-center mx-auto max-w-xl font-[700] bg-gradient-to-r from-gray-500 via-white to-gray-500 text-transparent bg-clip-text">
           Frequently Asked Questions
         </h1>
         <div className="mt-8 w-full">
-          <AccordionContainer className="max-w-3xl mx-auto">
+          <AccordionContainer className="max-w-3xl mx-auto ">
             <Accordion>
               <AccordionWrapper>
                 {faqs.map((faq, idx) => (
