@@ -1,5 +1,5 @@
 import { Zap } from "lucide-react";
-import { useAnimateText } from "../hooks/useAnimateText";
+import heroImg from "../assets/heroImg.png";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -48,7 +48,7 @@ const HeroSection = () => {
       <div className="absolute overflow-hidden inset-0 w-full h-[60dvh] lg:h-full">
         <img
           ref={heroImgRef}
-          src={"/heroImg.png"}
+          src={heroImg}
           alt={"hero-bg"}
           className={"w-full h-full object-cover"}
         />

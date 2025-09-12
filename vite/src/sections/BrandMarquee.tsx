@@ -1,60 +1,71 @@
 import { cn } from "../lib/utils";
 import Marquee from "../components/Marquee";
 import "../index.css";
+import Bizgrowth from "../assets/partner-brands/Biz-Growth.png";
+import Brownstone from "../assets/partner-brands/Brownstone.png";
+import CraftDesk from "../assets/partner-brands/CD.png";
+import InsightVision from "../assets/partner-brands/Insight-Vision.png";
+import Interzens from "../assets/partner-brands/Interzens.png";
+import Miles from "../assets/partner-brands/miles-logo.svg";
+import Milestone from "../assets/partner-brands/Milestone-Logo.png";
+import QHTECH from "../assets/partner-brands/QHTECH-Solution.png";
+import Zaavi from "../assets/partner-brands/Zaavi-Light.png";
+import Zaaviyan from "../assets/partner-brands/Zaaviyan Contracting.png";
+import Zippro from "../assets/partner-brands/Zippro-Logo.png";
 const reviews = [
   {
     name: "Biz-Growth",
-    img: "Biz-Growth.png",
+    img: Bizgrowth,
     color: "#DCE4C9",
   },
   {
     name: "Brownstone",
-    img: "Brownstone.png",
+    img: Brownstone,
     color: "#FEF1E6",
   },
   {
     name: "CraftDesk",
-    img: "CD.png",
+    img: CraftDesk,
     color: "#F8EDE3",
   },
   {
     name: "Insight-Vision",
-    img: "Insight-Vision.png",
+    img: InsightVision,
     color: "#330000",
   },
   {
     name: "Interzens",
-    img: "Interzens.png",
+    img: Interzens,
     color: "#1a0000",
   },
   {
     name: "Miles",
-    img: "miles-logo.svg",
+    img: Miles,
     color: "#C0D6E8",
   },
   {
     name: "Milestone",
-    img: "Milestone-Logo.png",
+    img: Milestone,
     color: "#FBF9D1",
   },
   {
     name: "Qhtech",
-    img: "QHTECH-Solution.png",
+    img: QHTECH,
     color: "#40e0d0",
   },
   {
     name: "Zaavi",
-    img: "Zaavi-Light.png",
+    img: Zaavi,
     color: "#00335A",
   },
   {
     name: "Zaaviyan Contracting",
-    img: "Zaaviyan Contracting.png",
+    img: Zaaviyan,
     color: "#F3E9DC",
   },
   {
     name: "Zippro",
-    img: "Zippro-Logo.png",
+    img: Zippro,
     color: "#ECEDB0",
   },
 ];
@@ -71,7 +82,7 @@ const ReviewCard = ({ img, color }: { img: string; color: string }) => {
         " border border-slate-50/30"
       )}
     >
-      <img className="w-auto" alt="" src={`/partner-brands/${img}`} />
+      <img className="w-auto" alt="" src={img} />
     </figure>
   );
 };
