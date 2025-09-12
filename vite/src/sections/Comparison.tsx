@@ -21,7 +21,7 @@ const Comparison = () => {
       <div className="container mx-auto px-6 lg:px-12">
         {/* Heading */}
         <div className="text-center mb-12">
-          <h2 className=" text-3xl lg:text-5xl text-white font-bold tracking-tight">
+          <h2 className=" text-4xl lg:text-5xl text-white font-bold tracking-tight">
             Why Choose <span className="text-red-600">Us</span> Over Others
           </h2>
           <p className="mt-3 text-gray-300 ">

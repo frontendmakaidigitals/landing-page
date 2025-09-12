@@ -32,8 +32,8 @@ const FAQ = () => {
 
   return (
     <section className="my-16">
-      <div className="container">
-        <h1 className="text-5xl text-center mx-auto max-w-xl font-[700] bg-gradient-to-r from-gray-500 via-white to-gray-500 text-transparent bg-clip-text">
+      <div className="container p-4">
+        <h1 className="text-4xl lg:text-5xl text-center mx-auto max-w-xl font-[700] bg-gradient-to-r from-gray-500 via-white to-gray-500 text-transparent bg-clip-text">
           Frequently Asked Questions
         </h1>
         <div className="mt-8 w-full">

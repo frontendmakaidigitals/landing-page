@@ -3,78 +3,83 @@ import Marquee from "../components/Marquee";
 import "../index.css";
 const reviews = [
   {
-    name: "facebook",
-    img: "facebook.webp",
+    name: "Biz-Growth",
+    img: "Biz-Growth.png",
+    color: "#DCE4C9",
   },
   {
-    name: "x",
-    img: "X.png",
+    name: "Brownstone",
+    img: "Brownstone.png",
+    color: "#FEF1E6",
   },
   {
-    name: "google",
-    img: "google.webp",
+    name: "CraftDesk",
+    img: "CD.png",
+    color: "#F8EDE3",
   },
   {
-    name: "microsoft",
-    img: "Microsoft.png",
+    name: "Insight-Vision",
+    img: "Insight-Vision.png",
+    color: "#330000",
   },
   {
-    name: "cisco",
-    img: "cisco.png",
+    name: "Interzens",
+    img: "Interzens.png",
+    color: "#1a0000",
   },
   {
-    name: "instagram",
-    img: "Instagram.png",
+    name: "Miles",
+    img: "miles-logo.svg",
+    color: "#C0D6E8",
   },
   {
-    name: "facebool",
-    img: "facebook.webp",
+    name: "Milestone",
+    img: "Milestone-Logo.png",
+    color: "#FBF9D1",
   },
   {
-    name: "x",
-    img: "X.png",
+    name: "Qhtech",
+    img: "QHTECH-Solution.png",
+    color: "#40e0d0",
   },
   {
-    name: "google",
-    img: "google.webp",
+    name: "Zaavi",
+    img: "Zaavi-Light.png",
+    color: "#00335A",
   },
   {
-    name: "microsoft",
-    img: "Microsoft.png",
+    name: "Zaaviyan Contracting",
+    img: "Zaaviyan Contracting.png",
+    color: "#F3E9DC",
   },
   {
-    name: "cisco",
-    img: "cisco.png",
-  },
-  {
-    name: "instagram",
-    img: "Instagram.png",
+    name: "Zippro",
+    img: "Zippro-Logo.png",
+    color: "#ECEDB0",
   },
 ];
 
 const firstRow = reviews.slice(0, reviews.length / 2);
 const secondRow = reviews.slice(reviews.length / 2, reviews.length);
 
-const ReviewCard = ({ img }: { img: string }) => {
+const ReviewCard = ({ img, color }: { img: string; color: string }) => {
   return (
     <figure
+      style={{ backgroundColor: color }}
       className={cn(
-        "relative w-[200px] flex justify-center items-center cursor-pointer overflow-hidden rounded-xl border p-4",
-        // light styles
-        "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
-        // dark styles
-        "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]"
+        "relative w-[130px] p-3 flex justify-center items-center cursor-pointer overflow-hidden rounded-xl",
+        " border border-slate-50/30"
       )}
     >
-      <img className="w-32" alt="" src={`/Logos/${img}`} />
+      <img className="w-auto" alt="" src={`/partner-brands/${img}`} />
     </figure>
   );
 };
 
 const BrandMarquee = () => {
   return (
-    <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background py-20 md:shadow-xl">
-      <Marquee pauseOnHover className="[--duration:50s]">
+    <div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background pb-10 lg:py-20 md:shadow-xl">
+      <Marquee pauseOnHover className="[--duration:30s]">
         {firstRow.map((review) => (
           <ReviewCard key={review.name} {...review} />
         ))}
@@ -83,8 +88,8 @@ const BrandMarquee = () => {
         ))}
       </Marquee>
 
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-black from-[20%]"></div>
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-black from-[20%]"></div>
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 lg:w-1/2 bg-gradient-to-r from-black from-[20%]"></div>
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 lg:w-1/2 bg-gradient-to-l from-black from-[20%]"></div>
     </div>
   );
 };

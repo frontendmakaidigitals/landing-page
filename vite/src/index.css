@@ -9,35 +9,26 @@
 body {
   background-color: black;
 }
+@theme inline {
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
 
-@keyframes marquee-scroll {
-  0% {
-    transform: translateX(0);
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
   }
-  100% {
-    transform: translateX(calc(-50% - var(--gap)));
+  @keyframes marquee-vertical {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(calc(-100% - var(--gap)));
+    }
   }
-}
-
-.marquee {
-  animation: marquee-scroll var(--duration) linear infinite;
-}
-
-.pause-marquee:hover .marquee {
-  animation-play-state: paused;
-}
-
-.reverse-marquee {
-  animation-direction: reverse;
-}
-
-.marquee > div > * {
-  transform: perspective(1000px) rotateX(15deg) scale(0.9);
-  transition: transform 0.3s ease;
-}
-
-.marquee > div > *:hover {
-  transform: perspective(1000px) rotateX(0deg) scale(1.05);
 }
 
 :root {
@@ -78,4 +69,17 @@ body {
 
 .gradient-shadow::after {
   filter: blur(50px); /* 🔹 glowing shadow effect */
+}
+
+@theme inline {
+  --animate-aurora: aurora 60s linear infinite;
+
+  @keyframes aurora {
+    from {
+      background-position: 50% 50%, 50% 50%;
+    }
+    to {
+      background-position: 350% 50%, 350% 50%;
+    }
+  }
 }

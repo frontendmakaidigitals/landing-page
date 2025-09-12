@@ -7,9 +7,11 @@ import StackkingCard from "./components/StackingCard";
 import Testimonial2 from "./sections/Testimonial2";
 import Comparison from "./sections/Comparison";
 import CTA from "./sections/CTA";
+import Nav from "./Header/Nav";
 function App() {
   return (
     <main>
+      <Nav />
       <HeroSection />
       <BrandMarquee />
       <Process />
