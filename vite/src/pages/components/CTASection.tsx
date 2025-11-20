@@ -1,11 +1,11 @@
-import { ButtonColorful } from "../components/Button";
+import { ButtonColorful } from "../../components/Button";
 const CTA = ({ mode = "dark" }) => {
   const isDark = mode === "dark";
 
   return (
     <section className="my-16 p-4 lg:p-0">
       <div
-        className={`container relative max-w-5xl rounded-lg border p-12 overflow-hidden transition-all duration-500
+        className={`container relative max-w-6xl rounded-lg border p-12 overflow-hidden transition-all duration-500
         ${
           isDark
             ? "border-slate-100/10 bg-gradient-to-br from-black via-zinc-900 to-black"
@@ -33,18 +33,29 @@ const CTA = ({ mode = "dark" }) => {
 
         {/* Text */}
         <h1
-          className={`text-3xl relative z-10 lg:text-4xl max-w-xl text-center lg:text-start transition-all duration-500
+          className={`text-3xl relative font-[500] tracking-tight  z-10 lg:text-4xl max-w-xl text-center lg:text-start transition-all duration-500
           ${isDark ? "text-slate-50" : "text-slate-800"}`}
         >
-          Let's get on a call and plan your best-selling campaign.
+          Assess Your Eligibility
         </h1>
 
         <p
-          className={`mt-2 text-center relative z-10 lg:text-start transition-all duration-500
+          className={`mt-4 space-y-4 max-w-4xl text-center relative z-10 lg:text-start transition-all duration-500
           ${isDark ? "text-slate-100" : "text-slate-600"}`}
         >
-          If we don&apos;t deliver on our promise, you pay nothing and we will
-          refund.
+          <span className="block">
+            If you have a general inquiry, you can send it to our co-founder's
+            email : <strong>info@spok.digital</strong>
+          </span>
+          <span className="block">
+            We work with limited businesses who we can actually bring results
+            and have long term relation. If you seriously want to explore what
+            growth our team can bring to your brand, click the button below to
+            schedule a 30 minutes call.
+          </span>
+          <span className="block">
+            We're always excited to chat with passionate business owners.
+          </span>
         </p>
 
         {/* Button */}

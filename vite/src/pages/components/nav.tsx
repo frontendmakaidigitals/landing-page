@@ -1,10 +1,10 @@
-import Logo from "./Logo";
+import Logo from "../../Header/Logo";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { cn } from "../lib/utils";
-import LogoLight from "../assets/Logo.png";
-import LogoDark from "../assets/Logo-black.png";
+import { cn } from "../../lib/utils";
+import LogoLight from "../../assets/Logo.png";
+import LogoDark from "../../assets/Logo-black.png";
 interface NavProps {
   mode?: "dark" | "light";
 }
@@ -13,7 +13,7 @@ const Nav = ({ mode = "dark" }: NavProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const textColor = mode === "dark" ? "text-white" : "text-black";
-  const bgHomeColor = mode === "dark" ? "bg-red-600" : "bg-red-500";
+  const bgHomeColor = mode === "dark" ? "bg-red-500/70" : "bg-red-500";
 
   const menuLinks = [
     { label: "Home", link: "https://spok.digital/" },
@@ -23,19 +23,19 @@ const Nav = ({ mode = "dark" }: NavProps) => {
   ];
 
   return (
-    <header className="py-5 relative">
-      <div className="container px-3 flex justify-between items-center">
+    <header className="py-5 ">
+      <div className="container flex justify-between items-center">
         <Logo img={mode === "dark" ? LogoLight : LogoDark} />
 
-        <ul className="hidden lg:flex items-center gap-6">
+        <ul className="hidden border p-1 rounded-full border-white/10 bg-white/8  lg:flex items-center gap-2">
           {menuLinks.map((menu, idx) => (
             <li
               key={idx}
               className={cn(
-                `px-3 py-[.4rem] ${textColor}`,
+                `px-4 py-[.6rem] rounded-full  ${textColor}`,
                 menu.label.toLowerCase() === "home"
-                  ? `${bgHomeColor} text-white rounded-lg`
-                  : ""
+                  ? `${bgHomeColor} backdrop-blur-xl text-white `
+                  : "hover:bg-red-500/30"
               )}
             >
               <a href={menu.link}>{menu.label}</a>
@@ -43,7 +43,6 @@ const Nav = ({ mode = "dark" }: NavProps) => {
           ))}
         </ul>
 
-        {/* Mobile menu button */}
         <button
           onClick={() => setIsMenuOpen(true)}
           className={cn(

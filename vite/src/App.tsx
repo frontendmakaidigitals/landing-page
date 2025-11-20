@@ -8,20 +8,30 @@ import Testimonial2 from "./sections/Testimonial2";
 import Comparison from "./sections/Comparison";
 import CTA from "./sections/CTA";
 import Nav from "./Header/Nav";
+import { Routes, Route } from "react-router-dom";
+import Landing from "./pages/landing";
 function App() {
   return (
-    <main>
-      <Nav />
-      <HeroSection />
-      <BrandMarquee />
-      <Process />
-      <StickyScroll />
-      <Comparison />
-      <Testimonial2 />
-      <StackkingCard />
-      <FAQ />
-      <CTA />
-    </main>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <main>
+            <Nav />
+            <HeroSection />
+            <BrandMarquee />
+            <Process />
+            <StickyScroll />
+            <Comparison />
+            <Testimonial2 />
+            <StackkingCard />
+            <FAQ />
+            <CTA />
+          </main>
+        }
+      />
+      <Route path="/landing" element={<Landing />} />
+    </Routes>
   );
 }
 

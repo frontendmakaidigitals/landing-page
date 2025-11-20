@@ -88,8 +88,8 @@ export function AccordionItem({
       data-active={isActive || undefined}
       className={`rounded-lg overflow-hidden mb-2 ${
         isActive
-          ? "active border-2  border-[#F2F2F2]  bg-[#F2F2F2]"
-          : "bg-transparent border-2 "
+          ? "active border-2  border-pink-800/20 bg-[#F2F2F2]"
+          : "bg-transparent border-2 border-pink-800/20"
       }`}
       data-value={value}
     >
